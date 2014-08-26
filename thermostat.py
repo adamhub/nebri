@@ -1,3 +1,6 @@
+# pip install first
+import thermostat
+
 class thermostat(NebriOS):
     # this KVP is updated from another script
     # that checks the thermostat
