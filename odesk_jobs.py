@@ -9,8 +9,8 @@ class odesk_jobs(NebriOS):
     listens_to = ['example']
     #schedule = "0 0 * * *" # daily
 
-    app_key = 'e314b3e45875cfd14a0e4d5a1f0f4e86'  # your oDesk application key
-    app_secret = '4ae4c042138d1e63'               # oDesk application secret key
+    app_key = ''  # your oDesk application key
+    app_secret = ''               # oDesk application secret key
     
     #to get oDesk api tokens you need:
     username = '' # your oDesk login
