@@ -23,7 +23,7 @@ def get_company_revenue(company):
     else:
         raise ValueError("Can't extract revenue data")
 
-class example(NebriOS):
+class wolframQuery(NebriOS):
     schedule = "0 0 * * *" # daily
     #schedule = "* * * * *" # each minute
     my_email = "email@example.com"
