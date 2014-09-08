@@ -115,8 +115,8 @@ class odesk_jobs(NebriOS):
         request_params = {'q':'python',
                           'job_status': 'open',
                           'days_posted': 5,
-                          'budget': '1000',
-                          'client_hires': '15',
+                          'budget': '1000-',
+                          'client_hires': '15-',
                           'skills':['python'] }
         response = client.provider_v2.search_jobs(data=request_params)
         if response:
