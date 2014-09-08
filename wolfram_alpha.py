@@ -28,7 +28,7 @@ class example(NebriOS):
     #schedule = "* * * * *" # each minute
     my_email = "email@example.com"
     company_name = "google"
-    threshold_revenue = 300
+    threshold_revenue = 300 #in billions
 
     def check(self):
         return get_company_revenue(self.company_name) >= self.threshold_revenue
