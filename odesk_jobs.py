@@ -6,8 +6,7 @@ import sys
 import json
 
 class odesk_jobs(NebriOS):
-    listens_to = ['example']
-    #schedule = "0 0 * * *" # daily
+    schedule = "0 0 * * *" # daily
 
     app_key = ''  # your oDesk application key
     app_secret = ''               # oDesk application secret key
