@@ -25,3 +25,4 @@ class dropbox_monitor(NebriOS):
 
     def action(self):
         self.new_file = True
+        send_email("me@example.com","The Report is ready since it has been modified in the last 7 days")
