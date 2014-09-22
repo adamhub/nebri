@@ -22,6 +22,7 @@ class dropbox_monitor(NebriOS):
                 delta = current_time - modified_time
                 days = int(delta.days)
                 if days <= 7:
+                    return True
 
     def action(self):
         self.new_file = True
