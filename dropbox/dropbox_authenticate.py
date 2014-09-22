@@ -12,13 +12,13 @@ class dropbox_authenticate(NebriOS):
             try:
                 shared.dropbox_token, shared.dropbox_user_id = flow.finish(shared.code)
             except dropbox.rest.ErrorResponse as e:
-                send_email("me@example.com",
+                send_email(self.last_actor,
                     "Hello, Your code did not work; please click the link and enter the new confirmation code in the form {{authorize_url}} shared_code := - Please enter the confirmation code\n-Nebri OS",
                     subject="Nebri OS Dropbox"
                 )
         else:
             self.authorize_url = flow.start()
-            send_email("me@example.com",
+            send_email(self.last_actor,
                 "Hello, Please click the link and enter the confirmation code in the form {{authorize_url}} shared_code := - Please enter the confirmation code\n-Nebri OS",
                 subject="Nebri OS Dropbox"
             )
