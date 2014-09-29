@@ -4,7 +4,7 @@ class freshbooks_monitor(NebriOS):
     listens_to = ['check_freshbooks']
 
     def check(self):
-        client = api.TokenClient('tomk.freshbooks.com', '69d163aace46d80aaaba0fe73b0d42b9', user_agent='Nebri/1.0')
+        client = api.TokenClient(shared.fresh_user, shared.fresh_key, user_agent='Nebri/1.0')
 
         now = datetime.now()
 
@@ -23,7 +23,7 @@ class freshbooks_monitor(NebriOS):
         return False
 
     def action(self):
-        send_email('tomk@bixly.com', """
+        send_email('me@example.com', """
             Invoice(s) %s are over 3 weeks old and have not been paid.
             """ % (', '.join(self.invoice_names)))
         self.invoices = True
