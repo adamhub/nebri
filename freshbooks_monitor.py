@@ -13,7 +13,7 @@ class freshbooks_monitor(NebriOS):
         invoice_names = []
 
         for invoice in invoice_response.invoices.invoice:
-            if (invoice.status != 'paid' and float(str(invoice.amount)) > 3000 and (now - datetime.strptime(invoice.date, '%Y-%m-%d %H:%M:%S')).days >= 21):
+            if (invoice.status != 'paid' and float(str(invoice.amount)) > 3000 and (now - datetime.strptime(invoice.date, '%Y-%m-%d %H:%M:%S')).days >= 3):
                 invoice_names.append(invoice.invoice_id)
 
         if invoice_names:
