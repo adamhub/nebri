@@ -1,19 +1,13 @@
 import dropbox
 
 class dropbox_monitor(NebriOS):
-    """Monitor dropbox activity
-
-    checks if a certain file in your dropbox account has been motified in the last 7 days
-    if it has, a KVP will be set to alert you to the existence of the new file
-    """
-    # The script is started by setting "dropbox_monitor_go" to True as you suggested which starts the flow
     listens_to = ["dropbox_monitor_go", ]
 
     def check(self):
         flow = dropbox.client.DropboxOAuth2FlowNoRedirect(shared.dropbox_key, shared.dropbox_secret)
         client = dropbox.client.DropboxClient(shared.dropbox_token)
 
-        search = client.search("/", "report.otd", file_limit=1000, include_deleted=False)
+        search = client.search("/", "report.xlx", file_limit=1000, include_deleted=False)
         if search:
             for item in search:
                 current_time = datetime.now()
@@ -25,5 +19,4 @@ class dropbox_monitor(NebriOS):
                     return True
 
     def action(self):
-        self.new_file = True
-        send_email("me@example.com","The Report is ready since it has been modified in the last 7 days")
+        send_email("me@example.com","The report is late!!!")
