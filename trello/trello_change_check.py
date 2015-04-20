@@ -2,11 +2,11 @@ import httplib2
 import json
 from urllib import urlencode
 
- # Get key here: https://trello.com/app-key
-TRELLO_KEY = ''
+# Get key here: https://trello.com/app-key
+# Add shared KVP 'TRELLO_KEY' with a value of the key
 # Get token here, replacing API_KEY with the key you got above
 # https://trello.com/1/authorize?key=API_KEY&name=Nebri+Scriptrunner&expiration=never&response_type=token
-TRELLO_TOKEN = ''
+# Add shared KVP 'TRELLO_TOKEN' with a value of the token
 
 class trello_change_check(NebriOS):
     listens_to = ['trello_check_cards']
@@ -20,8 +20,8 @@ class trello_change_check(NebriOS):
             url += '/'
         url += path
         url += '?'
-        url += "key=" + TRELLO_KEY
-        url += "&token=" + TRELLO_TOKEN
+        url += "key=" + shared.TRELLO_KEY
+        url += "&token=" + shared.TRELLO_TOKEN
 
         if len(query) > 0:
             url += '&' + urlencode(query)
