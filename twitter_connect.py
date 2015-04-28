@@ -7,12 +7,13 @@ class twitter_connect(NebriOS):
         return self.twitter_connect == True and self.twitter_screen_name != ''
 
     def action(self):
+        # pull from shared kvps
         api = twitter.Api(
-            consumer_key=shared.TWITTER_CONSUMER_KEY, 
-            consumer_secret=shared.TWITTER_CONSUMER_SECRET, 
-            access_token_key=shared.TWITTER_ACCESS_TOKEN_KEY, 
-            access_token_secret=shared.TWITTER_ACCESS_TOKEN_SECRET
+            consumer_key=consumer_key, 
+            consumer_secret=consumer_secret, 
+            access_token_key=access_key, 
+            access_token_secret=access_secret
         )
 
         twitter_user = api.GetUser(screen_name=self.twitter_screen_name)
-        print twitter_user
+        self.twitter_user_dict = twitter_user.AsDict()
