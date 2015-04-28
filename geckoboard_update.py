@@ -14,8 +14,7 @@ class geckoboard_update(NebriOS):
         self.ran_at = datetime.now()
         
         # geckoboard api key
-        # TODO: change this to bixly creds (sample only)
-        api_key = "0be2329c71bee77b53904b2b91ccf576"
+        api_key = ""
         
         payload = {}
         payload['api_key'] = api_key
