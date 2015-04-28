@@ -29,7 +29,7 @@ class google_drive_monitor(NebriOS):
     listens_to = ['monitor_drive']
 
     def check(self):
-        credentials = OAuth2Credentials.from_json(shared.drive_credentials)
+        credentials = OAuth2Credentials.from_json(shared.client_credentials)
         http = httplib2.Http()
         http = credentials.authorize(http)
 
