@@ -1,0 +1,24 @@
+<polymer-element name="url-entry" extends="nebrios-element" attributes="url">
+    <template>
+        <br>
+        <div>
+            <button on-click=" {{onRemoveUrlClick}} ">X</button>
+            <nebrios-ajax id="removeUrl" auto="false" url="/api/v1/url_monitor/remove_button" params='{"url": "{{url}}"}' on-response="{{ onRemoveUrlResponse }}"></nebrios-ajax>
+            {{url}}
+        </div>
+        <div hidden?="{{removeUrlResponse == ''}}">
+            Response: {{removeUrlResponse}}
+        </div>
+    </template>
+    <script>
+        Polymer("url-entry", {
+            onRemoveUrlClick: function() {
+                this.$.removeUrl.go();
+            },
+            removeUrlResponse: "",
+            onRemoveUrlResponse: function(event, response) {
+                this.removeUrlResponse = response.response;
+            }    
+        });
+    </script>
+</polymer-element>

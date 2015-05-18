@@ -1,0 +1,43 @@
+<polymer-element name="monitored-urls" extends="nebrios-element">
+    <template>
+        <h2>Monitored URLS</h2>
+        <br>
+        <div>
+            <button on-tap="{{toggleAddUrlForm}}">Monitor New URL</button>
+            <button on-tap="{{toggleRemoveUrlForm}}">Stop Monitoring URL</button>
+        </div>
+        <br><br>
+        <div>
+            <b>URLS:</b>
+            <br>
+            <template repeat="{{url in kvps.monitored_urls.value}}">
+                <url-entry url="{{ url.value }}"></url-entry>
+            </template>
+        </div>
+        
+        <br><br>
+        
+        <div hidden?="{{addUrlForm}}">
+            <add-url-monitor></add-url-monitor>
+        </div>
+        
+        <br><br>
+        
+        <div hidden?="{{removeUrlForm}}">
+            <remove-url-monitor></remove-url-monitor>
+        </div>
+        
+    </template>
+    <script>
+        Polymer("monitored-urls", {
+            addUrlForm: true,
+            toggleAddUrlForm: function() {
+                this.addUrlForm = !this.addUrlForm;
+            },
+            removeUrlForm: true,
+            toggleRemoveUrlForm: function() {
+                this.removeUrlForm = !this.removeUrlForm;
+            }
+        });
+    </script>
+</polymer-element>
