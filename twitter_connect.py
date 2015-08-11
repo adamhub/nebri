@@ -7,7 +7,10 @@ class twitter_connect(NebriOS):
         return self.twitter_connect == True and self.twitter_screen_name != ''
 
     def action(self):
-        # pull from shared kvps
+        consumer_key = shared.consumer_key
+        consumer_secret = shared.consumer_secret
+        access_key = shared.access_key
+        access_secret = shared.access_secret
         api = twitter.Api(
             consumer_key=consumer_key, 
             consumer_secret=consumer_secret, 
@@ -17,3 +20,4 @@ class twitter_connect(NebriOS):
 
         twitter_user = api.GetUser(screen_name=self.twitter_screen_name)
         self.twitter_user_dict = twitter_user.AsDict()
+            # just pulling user's profile data as an example
