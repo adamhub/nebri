@@ -1,0 +1,37 @@
+import httplib2
+import sys
+
+from apiclient.discovery import build
+from oauth2client.file import Storage
+from oauth2client.client import AccessTokenRefreshError
+from oauth2client.client import OAuth2WebServerFlow
+from oauth2client.tools import run
+
+class gmail_connect(NebriOS):
+    listens_to = ['gmail_connect']
+
+    def check(self):
+        return self.gmail_connect == True and self.userId != ''
+
+    def authorize_client(self):
+        # Guide to get client ID and secret for Oauth 2.0:
+        # https://developers.google.com/console/help/new/#generatingoauth2
+        client_id = shared.GMAIL_CLIENT_ID
+        client_secret = shared.GMAIL_CLIENT_SECRET
+        scope = 'https://www.googleapis.com/auth/gmail.readonly'
+        flow = OAuth2WebServerFlow(client_id, client_secret, scope)
+
+    def action(self):
+        self.gmail_connect = "RAN"
+        self.authorize_client()
+        storage = Storage('credentials.dat')
+        credentials = storage.get()
+        if credentials is None or credentials.invalid:
+            credentials = run(flow, storage)
+
+        http = httplib2.Http()
+        http = credentials.authorize(http)
+        service = build('gmail', 'v1', http=http)
+        response = service.users().messages().list(userId=self.userId).execute()
+        message_id = response['messages'][0]['id']
+        latest_message = service.users().messages().get(id=message_id, userId=self.userId).execute()
