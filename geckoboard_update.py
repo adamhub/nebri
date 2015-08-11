@@ -1,5 +1,15 @@
 import json
 import requests
+"""  Data format for shared KVP
+{
+"data": {
+"item": [{"value": 142}, {"value": 200}]
+},
+"push_url": "https://push.geckoboard.com/v1/send/142235-06263b5d-b239-4845-adde-547ee16ae2a"
+}
+"""
+
+
 
 class geckoboard_update(NebriOS):
     listens_to = ['shared.geckoboard_data']
@@ -26,3 +36,4 @@ class geckoboard_update(NebriOS):
         else:
             raise Exception("Could not post geckoboard update."\
                             " Error Code: {}".format(r.status_code))
+                            
