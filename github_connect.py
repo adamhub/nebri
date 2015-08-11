@@ -1,5 +1,5 @@
 import datetime
-from github import Github
+from github import Github  # https://github.com/PyGithub/PyGithub
 
 # When triggering a wake-up, repo_name needs to be sent.
 class github_connect(NebriOS):
