@@ -6,10 +6,10 @@ class google_update_spreadsheet(NebriOS):
     listens_to = ['shared.update_gsheet']
 
     def check(self):
-        if shared.client_credentials and \
-           shared.update_gsheet['filename'] and \
-           shared.update_gsheet['data']:
-            return True
+        #if shared.client_credentials and \
+        #   shared.update_gsheet['filename'] and \
+        #   shared.update_gsheet['data']:
+        #    return True
         return True
 
     def action(self):
