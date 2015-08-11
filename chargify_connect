@@ -1,0 +1,12 @@
+from chargify_python import chargify # from https://github.com/hindsightlabs/chargify-python
+
+class chargify_connect(NebriOS):
+    listens_to = ['chargify_connect']
+
+    def check(self):
+        return self.chargify_connect == True
+
+    def action(self):
+        self.chargify_connect == "RAN"
+        chargify_api = chargify.Chargify(shared.CHARGIFY_API_KEY, shared.CHARGIFY_SUBDOMAIN)
+        self.chargify_customers = str(chargify_api.customers()[:50])
