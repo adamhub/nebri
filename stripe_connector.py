@@ -11,7 +11,7 @@ class stripe_connector(NebriOS):
     def action(self):
         # fill in secret key, or use a shared kvp
         SECRET_KEY = ''
-        stripe.api_key = SECRET_KEY
+        stripe.api_key = shared.SECRET_KEY
         s = stripe.Charge.all(limit=1) 
         # the API returns latest payments first
         arr = s['data']
