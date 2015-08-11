@@ -26,7 +26,7 @@ class google_auth(NebriOS):
             shared.client_credentials = flow.step2_exchange(shared.client_code).to_json()
         else:
             self.authorize_url = flow.step1_get_authorize_url()
-            send_email("keving@bixly.com",
+            send_email(self.last_actor,
                 "Hello, Please click the link and enter the confirmation code in the form {{authorize_url}} shared_drive_code := - Please enter the confirmation code\n-Nebri OS",
                 subject="Nebri OS Google Auth"
             )
