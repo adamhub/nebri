@@ -14,5 +14,5 @@ class thermostat(NebriOS):
     def action(self):
         send_email("manager@example.com", "Temperature Adjusted")
 
-        # install and call any Python package 
+        # set the temperature
         thermostat.set(75)
